@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Diri TJKT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .biodata-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .biodata-container h2 {
+            text-align: center;
+            color: #1877f2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #1877f2;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #145db2;
+        }
+        .biodata-result {
+            margin-top: 20px;
+            display: none;
+        }
+        .biodata-result h3 {
+            color: #1877f2;
+            text-align: center;
+        }
+        .biodata-result p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="biodata-container">
+    <h2>Biodata Form</h2>
+    <form id="biodataForm">
+        <div class="form-group">
+            <label for="name">Nama Lengkap</label>
+            <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+            <label for="birthdate">Tanggal Lahir</label>
+            <input type="date" id="birthdate" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Jenis Kelamin</label>
+            <select id="gender" required>
+                <option value="">Pilih salah satu</option>
+                <option value="Male">Laki-Laki</option>
+                <option value="Female">Perempuan</option>
+                <option value="Other">Lainnya</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Alamat</label>
+            <input type="text" id="address" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">No. HP</label>
+            <input type="text" id="phone" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+    <div class="biodata-result" id="biodataResult">
+        <h3>Hasil</h3>
+        <p><strong>Nama Lengkap     :</strong> <span id="resultName"></span></p>
+        <p><strong>Tanggal Lahir    :</strong> <span id="resultBirthdate"></span></p>
+        <p><strong>Jenis Kelamin    :</strong> <span id="resultGender"></span></p>
+        <p><strong>Alamat           :</strong> <span id="resultAddress"></span></p>
+        <p><strong>No. HP           :</strong> <span id="resultPhone"></span></p>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('biodataForm');
+    const resultDiv = document.getElementById('biodataResult');
+    const resultName = document.getElementById('resultName');
+    const resultBirthdate = document.getElementById('resultBirthdate');
+    const resultGender = document.getElementById('resultGender');
+    const resultAddress = document.getElementById('resultAddress');
+    const resultPhone = document.getElementById('resultPhone');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Mengambil data dari form
+        const name = document.getElementById('name').value;
+        const birthdate = document.getElementById('birthdate').value;
+        const gender = document.getElementById('gender').value;
+        const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value;
+
+        // Menampilkan data di biodata result
+        resultName.textContent = name;
+        resultBirthdate.textContent = birthdate;
+        resultGender.textContent = gender;
+        resultAddress.textContent = address;
+        resultPhone.textContent = phone;
+
+        // Menampilkan div hasil biodata
+        resultDiv.style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
